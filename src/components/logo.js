@@ -21,7 +21,7 @@ const Logo = ({ ...props }) => {
       placeholderImage: file(relativePath: { eq: "nfong-v1.png" }) {
         childImageSharp {
           fluid(maxWidth: 2160) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_tracedSVG
           }
         }
       }
