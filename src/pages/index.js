@@ -1,21 +1,21 @@
-import React from "react"
+import React, {useState} from "react"
 import { Link } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
+import Logo from "../components/logo"
 import SEO from "../components/seo"
+import WIP from "../components/wip"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+const IndexPage = () => {
+  const [isLogoLoaded, setLogoLoaded] = useState(false);
+
+  return (
+    <Layout>
+      <SEO title="WIP" />
+      <Logo onLoad={() => setTimeout(() => setLogoLoaded(true), 2000)} />
+      {isLogoLoaded && <WIP />}
+    </Layout>
+  );
+};
 
 export default IndexPage

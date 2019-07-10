@@ -1,0 +1,33 @@
+.container {
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+}
+
+.letter {
+    cursor: default;
+    display: inline-block;
+    font-family: Monaco, 'Courier New', Courier, monospace;
+    font-size: 1em;
+    line-height: 1.2em;
+    visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
+    animation: thud 0.2s;
+    @keyframes thud {
+        0% {
+            transform: scale(1.02);
+        }
+        92% {
+            transform: scale(.995);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+}
