@@ -1,0 +1,25 @@
+@import '../../colors.scss';
+
+:global(h1) {
+  margin-left: 20vw;
+}
+.section {
+  display: flex;
+  flex-direction: column;
+}
+$skew: 0deg;
+#content {
+  height: 50%;
+  background: $yellow;
+  color: $black;
+  transform: skewY($skew);
+  .content {
+    transform: skewY(-1 * $skew);
+  }
+  h1 {
+    font-family: monospace;
+  }
+}
+.dot {
+  position: absolute;
+}

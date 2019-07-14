@@ -1,0 +1,17 @@
+.letter:last-of-type {
+  animation: highlight 900ms infinite;
+  @keyframes highlight {
+    0% {
+      filter: invert(1);
+    }
+    49% {
+      filter: invert(1);
+    }
+    50% {
+      filter: invert(0);
+    }
+    100% {
+      filter: invert(0);
+    }
+  }
+}

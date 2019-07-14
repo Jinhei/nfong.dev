@@ -1,25 +1,20 @@
 {
-    "version": 2,
-    "name": "nfong.dev",
-    "builds": [
-        {
-            "src": "package.json",
-            "use": "@now/static-build",
-            "config": {
-                "distDir": "public"
-            }
-        }
-    ],
-    "alias": [
-        "nfong.dev"
-    ],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "status": 301,
-            "headers": {
-                "Location": "https://nfong.dev/$1"
-            }
-        }
-    ]
+  "version": 2,
+  "name": "nfong.dev",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@now/static-build",
+      "config": {
+        "distDir": "public"
+      }
+    }
+  ],
+  "alias": ["nfong.dev"],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/wip"
+    }
+  ]
 }

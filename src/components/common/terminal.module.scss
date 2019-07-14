@@ -1,0 +1,89 @@
+@import '../../colors.scss';
+
+$border-radius: 0.4em;
+.container {
+  border-radius: $border-radius;
+  overflow: hidden;
+}
+
+$btn-height: 0.8em;
+$bar-height: calc(#{$btn-height} + 2 * #{$border-radius});
+.bar {
+  width: 100%;
+  height: $bar-height;
+  padding: $border-radius;
+  background-color: $grey;
+  display: grid;
+  grid-template-columns: repeat(2, $btn-height) 1fr;
+  grid-column-gap: $border-radius;
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, $btn-height) 1fr;
+  }
+}
+
+.btn {
+  display: inline-block;
+  height: $btn-height;
+  width: $btn-height;
+  border-radius: 50%;
+}
+
+.closeBtn {
+  composes: btn;
+  background-color: $red;
+}
+
+.minBtn {
+  composes: btn;
+  background-color: $yellow;
+}
+
+.plusBtn {
+  composes: btn;
+  background-color: $green;
+  display: none;
+  @media (min-width: 768px) {
+    display: inline-block;
+  }
+}
+
+$dim-white: change-color(
+  $color: $white,
+  $alpha: 0.4,
+);
+.body {
+  height: calc(100% - $bar-height);
+  width: 100%;
+  padding: $border-radius;
+  background-color: $dark_grey;
+  color: $white;
+  pre {
+    padding: 0;
+    background: none;
+    .user {
+      color: $dim-white;
+    }
+    pre {
+      display: flex;
+      align-items: center;
+      margin: 0;
+    }
+    code {
+      background: none;
+      font-family: monospace;
+      font-size: 1.2em;
+    }
+    svg {
+      height: 1em;
+      width: 1em;
+      margin-left: 0.4em;
+      fill: $dim-white;
+      * {
+        fill: $dim-white;
+      }
+    }
+    span ~ span:last-of-type {
+      color: $dark_grey;
+    }
+  }
+}

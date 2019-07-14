@@ -1,0 +1,41 @@
+@import '../colors.scss';
+
+:global(h1) {
+  margin-left: 20vw;
+}
+.section {
+  display: flex;
+  flex-direction: column;
+}
+#nfong {
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0.4em;
+  .content {
+    margin-top: auto;
+  }
+  h1 {
+    margin-bottom: 0;
+  }
+}
+#name {
+  margin-top: auto;
+  justify-self: flex-end;
+}
+$skew: 0deg;
+#content {
+  height: 50%;
+  background: $yellow;
+  color: $black;
+  transform: skewY($skew);
+  .content {
+    transform: skewY(-1 * $skew);
+  }
+  h1 {
+    font-family: monospace;
+  }
+}
+.dot {
+  position: absolute;
+}

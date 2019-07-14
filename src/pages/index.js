@@ -1,21 +1,23 @@
-import React, {useState} from "react"
-import { Link } from "gatsby"
+import React, { useState } from 'react';
 
-import Layout from "../components/layout"
-import Logo from "../components/logo"
-import SEO from "../components/seo"
-import WIP from "../components/wip"
+import Layout from '../components/layout';
+import SEO from '../components/seo';
+import styles from './index.module.scss';
+import Content from '../components/home/content';
+import Typeout from '../components/common/Typeout';
 
 const IndexPage = () => {
-  const [isLogoLoaded, setLogoLoaded] = useState(false);
-
   return (
     <Layout>
-      <SEO title="WIP" />
-      <Logo onLoad={() => setTimeout(() => setLogoLoaded(true), 2000)} />
-      {isLogoLoaded && <WIP />}
+      <SEO title="nfong.dev" />
+      <section id={styles.nfong} className={styles.section}>
+        <div className={styles.content}>
+          <Typeout id={styles.name} text="nfong" code={false} />
+        </div>
+      </section>
+      <Content />
     </Layout>
   );
 };
 
-export default IndexPage
+export default IndexPage;

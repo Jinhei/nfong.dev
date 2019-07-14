@@ -1,0 +1,62 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import { useStaticQuery, graphql } from 'gatsby';
+import Img from 'gatsby-image';
+import _ from 'lodash';
+
+const propTypes = {
+  filename: PropTypes.string.isRequired,
+  fixed: PropTypes.bool,
+  fragment: PropTypes.string,
+  maxWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  maxHeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  sharpProps: PropTypes.object,
+};
+const defaultProps = {
+  fixed: false,
+  fragment: '',
+  maxWidth: undefined,
+  maxHeight: undefined,
+  sharpProps: {},
+};
+const Image = ({
+  filename,
+  fixed,
+  fragment,
+  maxWidth,
+  maxHeight,
+  sharpProps = {},
+  ...props
+}) => {
+  const sharpType = fixed ? 'fixed' : 'fluid';
+  const sharpFragment =
+    fragment || `GatsbyImageSharp${_.capitalize(sharpType)}`;
+  const sharpQuery = _.map(
+    { ...sharpProps, maxWidth, maxHeight },
+    (val, key) => `${key}: ${val}`,
+  ).join(',');
+
+  const data = useStaticQuery(graphql`
+    query {
+      placeholderImage: file(relativePath: { eq: "${filename}" }) {
+        childImageSharp {
+          ${sharpType}(${sharpQuery}) {
+            ...${sharpFragment}
+          }
+        }
+      }
+    }
+  `);
+
+  const imgProps = {
+    ...props,
+    [sharpType]: data.data.placeholderImage.childImageSharp[sharpType],
+  };
+
+  return <Img {...imgProps} />;
+};
+Image.propTypes = propTypes;
+Image.defaultProps = defaultProps;
+
+// it turns out queries are handled at compile-time, so this doesn't work.
+// export default Image;
