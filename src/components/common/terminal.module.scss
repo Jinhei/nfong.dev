@@ -52,7 +52,7 @@ $dim-white: change-color(
   $alpha: 0.4,
 );
 .body {
-  height: calc(100% - $bar-height);
+  height: calc(100% - #{$bar-height});
   width: 100%;
   padding: $border-radius;
   background-color: $dark_grey;
